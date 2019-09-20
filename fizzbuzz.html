@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>FizzBuzz問題</title>
+</head>
+<body>
+
+    <style>
+        body {
+            margin: 1rem 4rem;
+        }
+        input {
+            width: 200px;
+        }
+        #output {
+            margin: 2rem 0;
+        }
+        #output p{
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+
+    <h1>FizzBuzz問題</h1>
+    
+    <div class="fizzNum">
+        <label for="fizzNum">FizzNum: </label>
+        <input type="text" id="fizzNum" class="fizzNUm" name="fizzNum" placeholder="整数値を入力してください">
+    </div>
+    <div class="buzzNum">
+        <label for="BuzzNum">BuzzNum: </label>
+        <input type="text" id="buzzNum" class="buzzNum" name="buzzNum" placeholder="整数値を入力してください">
+    </div>
+    <button id="button">実行</button>
+
+    <div id="output">
+        <p class="outputTitle">【出力】</p>
+        <p id="outputTxt">整数値を入力してください</p>
+    </div>
+
+    <script>
+    'use strict'
+        let output = document.getElementById('output');
+        let button = document.getElementById('button');
+
+        button.addEventListener('click', ()=> {
+
+            let fizzNum = document.getElementById('fizzNum').value;
+            let buzzNum = document.getElementById('buzzNum').value;
+
+            let max = 100;
+            let i = 1;
+            let j = 1;
+            let result = '';
+
+            while (fizzNum * i < max || buzzNum * j < max) {
+                if(fizzNum * i < buzzNum * j) {
+                    result = 'Fizz ' + fizzNum * i;
+                    i++;
+                    let resultP = document.createElement('p');
+                    resultP.innerHTML = result;
+                    output.appendChild(resultP);
+                } else if (buzzNum * j < fizzNum * i) {
+                    result = 'Buzz ' + buzzNum * j;
+                    j++;
+                    let resultP = document.createElement('p');
+                    resultP.innerHTML = result;
+                    output.appendChild(resultP);
+                } else {
+                    result = 'FizzBuzz ' + fizzNum * i;
+                    i++;
+                    j++;
+                    let resultP = document.createElement('p');
+                    resultP.innerHTML = result;
+                    output.appendChild(resultP);
+                }
+            }
+
+            let outputTxt = document.getElementById('outputTxt');
+            outputTxt.parentNode.removeChild(outputTxt);
+        })
+
+
+    </script>
+</body>
+</html>
