@@ -26,60 +26,54 @@
 
     <h1>FizzBuzz問題</h1>
     
-    <div class="fizzNum">
-        <label for="fizzNum">FizzNum: </label>
-        <input type="text" id="fizzNum" class="fizzNUm" name="fizzNum" placeholder="整数値を入力してください">
+    <div class="fizz-num">
+        <label for="fizz-num">FizzNum: </label>
+        <input type="text" id="fizz-num" class="fizz-num" name="fizz-num" placeholder="整数値を入力してください">
     </div>
-    <div class="buzzNum">
-        <label for="BuzzNum">BuzzNum: </label>
-        <input type="text" id="buzzNum" class="buzzNum" name="buzzNum" placeholder="整数値を入力してください">
+    <div class="buzz-num">
+        <label for="buzz-num">BuzzNum: </label>
+        <input type="text" id="buzz-num" class="buzz-num" name="buzz-num" placeholder="整数値を入力してください">
     </div>
-    <button id="button">実行</button>
+    <button id="exec-btn">実行</button>
 
     <div id="output">
-        <p class="outputTitle">【出力】</p>
-        <p id="outputTxt">整数値を入力してください</p>
+        <p class="output-title">【出力】</p>
+        <p id="output-txt">整数値を入力してください</p>
     </div>
 
     <script>
     'use strict'
-        let output = document.getElementById('output');
-        let button = document.getElementById('button');
+        const output = document.getElementById('output');
+        const execBtn = document.getElementById('exec-btn');
 
-        button.addEventListener('click', ()=> {
+        execBtn.addEventListener('click', ()=> {
 
-            let fizzNum = document.getElementById('fizzNum').value;
-            let buzzNum = document.getElementById('buzzNum').value;
+            let fizzNum = document.getElementById('fizz-num').value;
+            let buzzNum = document.getElementById('buzz-num').value;
 
-            let max = 100;
+            const MAX_NUM = 100;
             let i = 1;
             let j = 1;
             let result = '';
 
-            while (fizzNum * i < max || buzzNum * j < max) {
+            while (fizzNum * i < MAX_NUM || buzzNum * j < MAX_NUM) {
                 if(fizzNum * i < buzzNum * j) {
                     result = 'Fizz ' + fizzNum * i;
                     i++;
-                    let resultP = document.createElement('p');
-                    resultP.innerHTML = result;
-                    output.appendChild(resultP);
                 } else if (buzzNum * j < fizzNum * i) {
                     result = 'Buzz ' + buzzNum * j;
                     j++;
-                    let resultP = document.createElement('p');
-                    resultP.innerHTML = result;
-                    output.appendChild(resultP);
                 } else {
                     result = 'FizzBuzz ' + fizzNum * i;
                     i++;
-                    j++;
-                    let resultP = document.createElement('p');
-                    resultP.innerHTML = result;
-                    output.appendChild(resultP);
+                    j++; 
                 }
+                let resultP = document.createElement('p');
+                resultP.innerHTML = result;
+                output.appendChild(resultP);
             }
 
-            let outputTxt = document.getElementById('outputTxt');
+            const outputTxt = document.getElementById('output-txt');
             outputTxt.parentNode.removeChild(outputTxt);
         })
 
