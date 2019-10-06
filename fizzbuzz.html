@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>FizzBuzz問題</title>
+</head>
+<body>
+
+    <style>
+        body {
+            margin: 1rem 4rem;
+        }
+        input {
+            width: 200px;
+        }
+        #output {
+            margin: 2rem 0;
+        }
+        #output p{
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+
+    <h1>FizzBuzz問題</h1>
+    
+    <div class="fizz-num">
+        <label for="fizz-num">FizzNum: </label>
+        <input type="text" id="fizz-num" class="fizz-num" name="fizz-num" placeholder="整数値を入力してください">
+    </div>
+    <div class="buzz-num">
+        <label for="buzz-num">BuzzNum: </label>
+        <input type="text" id="buzz-num" class="buzz-num" name="buzz-num" placeholder="整数値を入力してください">
+    </div>
+    <button id="exec-btn">実行</button>
+
+    <div id="output">
+        <p class="output-title">【出力】</p>
+        <p id="output-txt">整数値を入力してください</p>
+    </div>
+
+    <script>
+    'use strict'
+        const output = document.getElementById('output');
+        const execBtn = document.getElementById('exec-btn');
+
+        execBtn.addEventListener('click', ()=> {
+
+            let fizzNum = document.getElementById('fizz-num').value;
+            let buzzNum = document.getElementById('buzz-num').value;
+
+            const MAX_NUM = 100;
+            let i = 1;
+            let j = 1;
+            let result = '';
+
+            while (fizzNum * i < MAX_NUM || buzzNum * j < MAX_NUM) {
+                if(fizzNum * i < buzzNum * j) {
+                    result = 'Fizz ' + fizzNum * i;
+                    i++;
+                } else if (buzzNum * j < fizzNum * i) {
+                    result = 'Buzz ' + buzzNum * j;
+                    j++;
+                } else {
+                    result = 'FizzBuzz ' + fizzNum * i;
+                    i++;
+                    j++; 
+                }
+                let resultP = document.createElement('p');
+                resultP.innerHTML = result;
+                output.appendChild(resultP);
+            }
+
+            const outputTxt = document.getElementById('output-txt');
+            outputTxt.parentNode.removeChild(outputTxt);
+        })
+
+
+    </script>
+</body>
+</html>
